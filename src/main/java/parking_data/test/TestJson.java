@@ -71,7 +71,7 @@ public class TestJson {
                 ) {
             for (ArrayList<Double> c: r.getGeometry().getCoordinates()
                     ) {
-                nodes.add(new Node(r.getProperties().getId().longValue(),
+                nodes.add(new Node(r.getProperties().getId().longValue(),  // todo same id, change
                         r.getProperties().getName(), c.get(1), c.get(0)));
             }
 
