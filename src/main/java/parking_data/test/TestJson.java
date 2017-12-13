@@ -30,6 +30,8 @@ public class TestJson {
         Double average_long = averageCoords.get(1);
 
         ArrayList<Node> letiNodes = getNodesAround(nodes, 59.58179, 30.19250, 0.15);
+        // add letinodes
+        // add rel-s by letinodes with same id or coordinates
         System.out.println("Check1");
     }
 
