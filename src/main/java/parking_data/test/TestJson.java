@@ -23,17 +23,22 @@ public class TestJson {
 
     public static void main(String[] args) {
         ArrayList<Road> roads = getRoadList();
+        ArrayList<Node> nodes = getNodes(roads);
+        System.out.println("Check1");
+    }
+
+    private static ArrayList<Node> getNodes(ArrayList<Road> roads) {
         ArrayList<Node> nodes = new ArrayList<>();
         for (Road r: roads
-             ) {
+                ) {
             for (ArrayList<Double> c: r.getGeometry().getCoordinates()
-                 ) {
+                    ) {
                 nodes.add(new Node(r.getProperties().getId().longValue(),
                         r.getProperties().getName(), c.get(0), c.get(1)));
             }
 
         }
-        System.out.println("Check1");
+        return nodes;
     }
 
     private static ArrayList<Road> getRoadList() {
