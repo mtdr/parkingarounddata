@@ -10,14 +10,14 @@ public class RoadProperties {
     private String name;
     private Integer tunnel;
     private Integer bridge;
-    private Boolean oneway;
+    private Integer oneway;
     private String ref;
     private Float z_order;
     private String access;
     private String service;
     private String className;
 
-    public RoadProperties(Float id, Float osm_id, String type, String name, Integer tunnel, Integer bridge, Boolean oneway, String ref, Float z_order, String access, String service, String className) {
+    public RoadProperties(Float id, Float osm_id, String type, String name, Integer tunnel, Integer bridge, Integer oneway, String ref, Float z_order, String access, String service, String className) {
         this.id = id;
         this.osm_id = osm_id;
         this.type = type;
@@ -80,11 +80,11 @@ public class RoadProperties {
         this.bridge = bridge;
     }
 
-    public Boolean getOneway() {
+    public Integer getOneway() {
         return oneway;
     }
 
-    public void setOneway(Boolean oneway) {
+    public void setOneway(Integer oneway) {
         this.oneway = oneway;
     }
 

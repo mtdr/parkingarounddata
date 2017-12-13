@@ -22,6 +22,16 @@ public class Node {
     private double latitude;
     private double longitude;
 
+    public Node(Long id, String name, double latitude, double longitude) {
+        this.id = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Node() {
+    }
+
     @Override
     public String toString() {
         return id.toString();
