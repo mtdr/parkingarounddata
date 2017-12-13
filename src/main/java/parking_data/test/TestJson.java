@@ -24,7 +24,43 @@ public class TestJson {
     public static void main(String[] args) {
         ArrayList<Road> roads = getRoadList();
         ArrayList<Node> nodes = getNodes(roads);
+
+        ArrayList<Double> averageCoords = getAverageCoords(nodes);
+        Double average_lat = averageCoords.get(0);
+        Double average_long = averageCoords.get(1);
+
+        ArrayList<Node> letiNodes = getNodesAround(nodes, 59.58179, 30.19250, 0.15);
         System.out.println("Check1");
+    }
+
+    private static ArrayList<Node> getNodesAround(ArrayList<Node> nodes, Double needed_lat, Double needed_long, Double r) {
+        ArrayList<Node> nodesAround = new ArrayList<>();
+        for (Node n: nodes
+                ) {
+            if (Math.abs(n.getLatitude() - needed_lat) < r && Math.abs(n.getLongitude() - needed_long) < r)
+            {
+                nodesAround.add(n);
+            } else {
+                System.out.println(n.getName() + " не подходит");
+            }
+
+        }
+        return nodesAround;
+    }
+
+    private static ArrayList<Double> getAverageCoords(ArrayList<Node> nodes) {
+        Double average_lat = 0.0, average_long = 0.0;
+        for (Node n: nodes
+                ) {
+            average_lat += n.getLatitude();
+            average_long += n.getLongitude();
+        }
+        average_lat = average_lat/nodes.size();
+        average_long = average_long/nodes.size();
+        ArrayList<Double> coords = new ArrayList<>();
+        coords.add(average_lat);
+        coords.add(average_long);
+        return coords;
     }
 
     private static ArrayList<Node> getNodes(ArrayList<Road> roads) {
@@ -34,7 +70,7 @@ public class TestJson {
             for (ArrayList<Double> c: r.getGeometry().getCoordinates()
                     ) {
                 nodes.add(new Node(r.getProperties().getId().longValue(),
-                        r.getProperties().getName(), c.get(0), c.get(1)));
+                        r.getProperties().getName(), c.get(1), c.get(0)));
             }
 
         }
@@ -42,7 +78,7 @@ public class TestJson {
     }
 
     private static ArrayList<Road> getRoadList() {
-        File file = new File("C:\\git\\road2.json");
+        File file = new File("C:\\git\\road.json");
         ArrayList<Road> data = new ArrayList<>();
         if (file.canRead()) {
             Gson gson = new Gson();
