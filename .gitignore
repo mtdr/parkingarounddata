@@ -10,3 +10,8 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+.idea
+parkingarounddata.iml
+pom.xml
+
+!/src/main/java/parking_data/domain/DistanceBtw.java
